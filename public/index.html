@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RTMP Streaming Software</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1><i class="fas fa-broadcast-tower"></i> RTMP Streaming Software</h1>
+            <p>Professional live streaming solution</p>
+        </header>
+
+        <div class="main-content">
+
+            <!-- Viewer Section -->
+            <section class="viewer-section">
+                <div class="card">
+                    <h2><i class="fas fa-eye"></i> Watch Streams</h2>
+                    <div class="stream-list">
+                        <div id="activeStreams" class="streams-container">
+                            <p class="no-streams">No active streams</p>
+                        </div>
+                    </div>
+                    <div class="viewer-controls">
+                        <div class="input-group">
+                            <label for="watchStreamKey">Stream Key to Watch:</label>
+                            <input type="text" id="watchStreamKey" placeholder="Enter stream key">
+                        </div>
+                        <button id="watchStream" class="btn btn-secondary">
+                            <i class="fas fa-play"></i> Watch Stream
+                        </button>
+                        <div class="help-text">
+                            <small><i class="fas fa-info-circle"></i> Lo stream deve essere attivo per essere visualizzato. Controlla la lista sopra per gli stream disponibili.</small>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video Player -->
+            <section class="player-section">
+                <div class="card">
+                    <h2><i class="fas fa-tv"></i> Stream Player</h2>
+                    <div class="video-container">
+                        <video id="videoPlayer" controls autoplay muted>
+                            <source src="" type="application/x-mpegURL">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="player-info">
+                        <div id="playerStatus" class="status-indicator">
+                            <i class="fas fa-circle"></i> No stream selected
+                        </div>
+                        <div id="viewerCount" class="viewer-count">
+                            <i class="fas fa-users"></i> 0 viewers
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stream Information -->
+            <section class="info-section">
+                <div class="card">
+                    <h2><i class="fas fa-info-circle"></i> Stream Information</h2>
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <label>RTMP Server:</label>
+                            <span>rtmp://localhost:1935</span>
+                        </div>
+                        <div class="info-item">
+                            <label>HLS Server:</label>
+                            <span>http://localhost:8000</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Web Interface:</label>
+                            <span>http://localhost:3000</span>
+                        </div>
+                        <div class="info-item">
+                            <label>Stream Format:</label>
+                            <span>H.264/AAC</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Instructions Modal -->
+        <div id="instructionsModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>How to Use</h2>
+                <div class="instructions">
+                    <h3>For Viewers:</h3>
+                    <ol>
+                        <li>Select an active stream from the list</li>
+                        <li>Or enter a stream key manually</li>
+                        <li>Click "Watch Stream" to view</li>
+                    </ol>
+                    
+                    <h3>Streaming Software Setup (for external streamers):</h3>
+                    <ul>
+                        <li><strong>OBS Studio:</strong> Settings → Stream → Server: rtmp://localhost:1935/live</li>
+                        <li><strong>Stream Key:</strong> Enter any unique key (e.g., "my-stream")</li>
+                        <li><strong>Bitrate:</strong> Recommended 2500-5000 kbps</li>
+                    </ul>
+                    
+                    <h3>Test with FFmpeg:</h3>
+                    <ul>
+                        <li><strong>Command:</strong> ffmpeg -re -i video.mp4 -c:v libx264 -c:a aac -f flv rtmp://localhost:1935/live/test-stream</li>
+                        <li><strong>Watch:</strong> Enter "test-stream" in the viewer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Help Button -->
+        <button id="helpBtn" class="help-btn">
+            <i class="fas fa-question-circle"></i>
+        </button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="app.js"></script>
+</body>
+</html>

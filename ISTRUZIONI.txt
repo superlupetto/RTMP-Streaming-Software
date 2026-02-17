@@ -1,0 +1,93 @@
+========================================
+    RTMP STREAMING SOFTWARE
+========================================
+
+PROBLEMA: start.bat non funziona?
+
+SOLUZIONE: Il problema è che Node.js non è installato sul tuo computer.
+
+========================================
+    COME INSTALLARE NODE.JS
+========================================
+
+1. Vai su: https://nodejs.org/
+2. Scarica la versione LTS (Long Term Support) - quella verde
+3. Esegui il file .msi scaricato
+4. Segui le istruzioni dell'installer (accetta tutto)
+5. RIAVVIA il computer dopo l'installazione
+6. Torna in questa cartella e esegui di nuovo start.bat
+
+========================================
+    ALTERNATIVE PER AVVIARE IL SOFTWARE
+========================================
+
+OPZIONE 1 - File Batch (Windows):
+   Doppio clic su: start.bat
+
+OPZIONE 2 - PowerShell (Windows):
+   Tasto destro su: start.ps1 → "Esegui con PowerShell"
+
+OPZIONE 3 - Comando manuale:
+   1. Apri il Prompt dei Comandi o PowerShell
+   2. Naviga in questa cartella
+   3. Esegui: npm install
+   4. Esegui: npm start
+
+========================================
+    DOPO L'INSTALLAZIONE DI NODE.JS
+========================================
+
+1. Esegui start.bat
+2. Apri il browser su: http://localhost:3000
+3. Inserisci una chiave stream (es: "mio-stream")
+4. Usa rtmp://localhost:1935/live nel tuo software di streaming
+
+========================================
+    SOFTWARE DI STREAMING CONSIGLIATI
+========================================
+
+- OBS Studio (GRATUITO): https://obsproject.com/
+- XSplit (a pagamento): https://www.xsplit.com/
+- Wirecast (a pagamento): https://www.telestream.net/wirecast/
+
+========================================
+    CONFIGURAZIONE OBS STUDIO
+========================================
+
+1. Apri OBS Studio
+2. Vai su: Impostazioni → Stream
+3. Servizio: Personalizzato
+4. Server: rtmp://localhost:1935/live
+5. Chiave stream: la chiave che hai inserito nel browser
+6. Bitrate: 2500-5000 kbps
+7. Clicca "OK" e poi "Avvia streaming"
+
+========================================
+    PROBLEMI COMUNI
+========================================
+
+❌ "Node.js non riconosciuto"
+   → Installa Node.js da https://nodejs.org/
+
+❌ "Porta già in uso"
+   → Chiudi altri programmi che usano le porte 3000, 1935, 8000
+
+❌ "Stream non disponibile"
+   → Assicurati che il software di streaming sia attivo
+
+❌ "Errore di installazione npm"
+   → Controlla la connessione internet
+
+========================================
+    SUPPORTO
+========================================
+
+Se hai ancora problemi:
+1. Controlla che Node.js sia installato: node --version
+2. Controlla che npm sia disponibile: npm --version
+3. Riavvia il computer
+4. Prova a eseguire i comandi manualmente
+
+========================================
+
+
